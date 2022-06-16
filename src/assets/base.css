@@ -1,0 +1,37 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --agnostic-font-family: font-family: 'Roboto', sans-serif;
+  --agnostic-focus-ring-outline-width: 0px;
+}
+
+.wrapper {
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.field {}
+
+.field label {
+  display: block;
+}
