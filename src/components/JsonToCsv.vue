@@ -3,7 +3,8 @@ import { ref, computed } from "vue";
 import { Input, Icon, Card, Button, Divider } from "agnostic-vue";
 import keys from "all-object-keys";
 import { get } from "lodash";
-// import { saveAs } from "file-saver";
+import { saveAs } from "file-saver";
+import Dropzone from "@/components/Dropzone.vue";
 import IconArrowRight from '@/components/icons/IconArrowRight.vue';
 
 const input = ref('');
@@ -13,10 +14,8 @@ const outputMultipleLanguages = ref(true);
 const outputIncludeValues = ref(true);
 const outputIncludeOrder = ref(true);
 
-function onFileChange(e: any) {
-  var files = e.target.files || e.dataTransfer.files;
-  if (!files.length) return;
-  readFile(files[0]);
+function onFileChange(files: FileList) {
+  if (files?.length) readFile(files[0]);
 }
 
 function readFile(file: any) {
@@ -88,12 +87,12 @@ function convertJsonToMultipleLanguage(data: any, lgs: string[]) {
   }
   return "";
 }
-/* function downloadFile(str: string, filename: string) {
+function downloadFile(str: string, filename: string) {
   saveAs(new Blob([str], { type: "text/plain;charset=utf-8" }), filename);
 }
 function exportOutput() {
-  downloadFile(outputText.value, (exportLg.value || "lg") + ".csv");
-} */
+  downloadFile(outputText.value, (outputLgs.value || "lg") + ".csv");
+}
 
 </script>
 
@@ -106,18 +105,8 @@ function exportOutput() {
     <div class="p16 full-width">
       <div class="card-title">Import</div>
       <Divider size="small"></Divider>
-      <div class="full-width">
-        <!-- <div class="field">
-          <label for="input-file">Select a JSON file :</label>
-          <input id="input-file" type="file" @change="onFileChange" accept=".json" />
-        </div> -->
-
-        <form class="dropzone needsclick">
-          <div class="dz-message needsclick">
-            Drop files here or click to upload.
-          </div>
-        </form>
-
+      <div class="full-width mbs16">
+        <Dropzone @onFiles="onFileChange" />
       </div>
     </div>
   </Card>
@@ -190,7 +179,7 @@ function exportOutput() {
     <div class="flex-grow-1">
 
     </div>
-    <div class="flex-grow-0"><Button mode="primary">Export</Button></div>
+    <div class="flex-grow-0"><Button mode="primary" @click="exportOutput">Export</Button></div>
   </div>
 </template>
 
@@ -220,15 +209,5 @@ function exportOutput() {
 
 .field-switch label {
   display: inline-block;
-}
-
-.dropzone {
-  background: white;
-  border-radius: 5px;
-  border: 2px dashed rgb(0, 135, 247);
-  border-image: none;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
 }
 </style>
