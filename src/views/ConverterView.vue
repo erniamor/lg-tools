@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Divider, Tabs } from "agnostic-vue";
 import JsonToCsv from '@/components/JsonToCsv.vue';
+import CsvToJson from '@/components/CsvToJson.vue';
 </script>
 
 <template>
@@ -22,8 +23,7 @@ import JsonToCsv from '@/components/JsonToCsv.vue';
         CSV to JSON
       </template>
       <template #panel-2>
-        <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just
-          testing some links out :)</p>
+        <CsvToJson></CsvToJson>
       </template>
     </Tabs>
   </div>

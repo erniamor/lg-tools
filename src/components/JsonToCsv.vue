@@ -90,8 +90,15 @@ function convertJsonToMultipleLanguage(data: any, lgs: string[]) {
 function downloadFile(str: string, filename: string) {
   saveAs(new Blob([str], { type: "text/plain;charset=utf-8" }), filename);
 }
+
+const fileName = computed(() => {
+  if (outputLgs.value) {
+    return validatedOutputLgs.value.join('-');
+  }
+  return 'lg';
+});
 function exportOutput() {
-  downloadFile(outputText.value, (outputLgs.value || "lg") + ".csv");
+  downloadFile(outputText.value, fileName.value + ".csv");
 }
 
 </script>
@@ -103,7 +110,7 @@ function exportOutput() {
 
   <Card is-shadow class="mbe32">
     <div class="p16 full-width">
-      <div class="card-title">Import</div>
+      <div class="card-title">Import JSON</div>
       <Divider size="small"></Divider>
       <div class="full-width mbs16">
         <Dropzone @onFiles="onFileChange" />
@@ -116,10 +123,6 @@ function exportOutput() {
       <div class="card-title">Options</div>
       <Divider size="small"></Divider>
       <div class="grid-1-1 full-width">
-        <div class="">
-          <Input id="languages" label="Selected languages" type="text" size="small"
-            help-text="Separate each language with a SPACE" v-model="outputLgs" />
-        </div>
         <div class="pbs16">
 
           <label class="checkbox-label-wrap">
@@ -143,6 +146,13 @@ function exportOutput() {
             <span class="checkbox-label-copy checkbox-label-copy-small">Include order</span>
           </label>
 
+        </div>
+
+        <div class="">
+          <template v-if="outputMultipleLanguages">
+            <Input id="languages" label="Selected languages" type="text" size="small"
+              help-text="Separate each language with a SPACE" v-model="outputLgs" />
+          </template>
         </div>
       </div>
     </div>
@@ -179,7 +189,7 @@ function exportOutput() {
     <div class="flex-grow-1">
 
     </div>
-    <div class="flex-grow-0"><Button mode="primary" @click="exportOutput">Export</Button></div>
+    <div class="flex-grow-0"><Button mode="primary" @click="exportOutput">Export CSV</Button></div>
   </div>
 </template>
 
