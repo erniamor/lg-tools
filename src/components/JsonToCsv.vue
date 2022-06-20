@@ -113,7 +113,7 @@ function exportOutput() {
       <div class="card-title">Import JSON</div>
       <Divider size="small"></Divider>
       <div class="full-width mbs16">
-        <Dropzone @onFiles="onFileChange" />
+        <Dropzone @onFiles="onFileChange" accept="application/JSON" />
       </div>
     </div>
   </Card>

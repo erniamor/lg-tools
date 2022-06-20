@@ -117,7 +117,7 @@ function exportOutput() {
       <div class="card-title">Import CSV</div>
       <Divider size="small"></Divider>
       <div class="full-width mbs16">
-        <Dropzone @onFiles="onFileChange" />
+        <Dropzone @onFiles="onFileChange" accept=".csv" />
       </div>
     </div>
   </Card>
