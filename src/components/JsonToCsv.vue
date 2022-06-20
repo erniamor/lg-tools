@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { Input, Icon, Card, Button, Divider } from "agnostic-vue";
-import keys from "all-object-keys";
+import getAllPaths from "@/utils/all-object-paths";
 import { get } from "lodash";
 import { saveAs } from "file-saver";
 import Dropzone from "@/components/Dropzone.vue";
@@ -41,7 +41,7 @@ function convertJsonToOneLanguage(data: any) {
   const withValues = outputIncludeValues.value;
   const withOrder = outputIncludeOrder.value;
   if (data) {
-    return keys(data)
+    return getAllPaths(data)
       .map((key: string, index: number) => {
 
         const cols = [];
@@ -62,7 +62,7 @@ function convertJsonToMultipleLanguage(data: any, lgs: string[]) {
   const withValues = outputIncludeValues.value;
   const withOrder = outputIncludeOrder.value;
   if (data) {
-    const tab = keys(data).map((key: string, index: number) => {
+    const tab = getAllPaths(data).map((key: string, index: number) => {
       const cols = [];
       if (withOrder) cols.push(index + 1);
       cols.push(`"${key}"`)

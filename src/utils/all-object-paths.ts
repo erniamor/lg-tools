@@ -6,12 +6,12 @@ function getObjectPaths(data: any, paths: string[], keys: string[]) {
       getObjectPaths(value, paths, [...keys, key])
     } else {
       const fullpath = [...keys, key].join('.');
-      paths.push(fullpath)
+      paths.push(fullpath);
     }
   })
   return paths;
 }
 
 export default (data: object) => {
-  return getObjectPaths(data, [], [])
+  return getObjectPaths(data, [], []);
 }
