@@ -9,7 +9,7 @@ import CsvToJson from '@/components/CsvToJson.vue';
     <h1>Converter</h1>
     <Divider></Divider>
     <p class="mbs8 mbe16">
-      Permet de convertir les fichiers de traduction du format JSON vers CSV et inversement.
+      Allows to convert translation files from JSON to CSV format and vice versa.
     </p>
     <Tabs>
       <template #tab-1>

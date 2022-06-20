@@ -8,7 +8,7 @@ import JsonSorter from '@/components/JsonSorter.vue';
     <h1>Sorter</h1>
     <Divider></Divider>
     <p class="mbs8">
-      Permet de réordonner un fichier JSON a partir d'un modele.
+      Allows to reorder a JSON file from a template.
     </p>
     <JsonSorter></JsonSorter>
   </div>
