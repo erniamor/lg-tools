@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import SidebarHead from '@/components/SidebarHead.vue';
 import SidebarNav from '@/components/SidebarNav.vue';
+import SidebarFoot from '@/components/SidebarFoot.vue';
 import { Divider } from "agnostic-vue";
 </script>
 
@@ -9,6 +10,7 @@ import { Divider } from "agnostic-vue";
     <SidebarHead></SidebarHead>
     <Divider></Divider>
     <SidebarNav></SidebarNav>
+    <SidebarFoot></SidebarFoot>
   </div>
 </template>
 
