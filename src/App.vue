@@ -36,6 +36,8 @@ import Sidebar from '@/components/Sidebar.vue';
   flex: 1;
 
   /* Make it scrollable */
+  height: 100vh;
   overflow: auto;
+
 }
 </style>
