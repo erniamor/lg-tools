@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Divider } from "agnostic-vue";
+import JsonSorter from '@/components/JsonSorter.vue';
 </script>
 
 <template>
@@ -9,5 +10,6 @@ import { Divider } from "agnostic-vue";
     <p class="mbs8">
       Permet de réordonner un fichier JSON a partir d'un modele.
     </p>
+    <JsonSorter></JsonSorter>
   </div>
 </template>
