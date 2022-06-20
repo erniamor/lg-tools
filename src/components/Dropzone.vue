@@ -1,16 +1,25 @@
 <template>
-  <label for="dropzoneFile">
+  <label :for="`dropzoneFile-${id}`">
     <div @dragenter.prevent="toggleActive" @dragleave.prevent="toggleActive" @dragover.prevent
       @drop.prevent="onFileDroped" :class="{ 'active-dropzone': active }" class="dropzone">
       <span>Drag and Drop a file here</span>
-      <input type="file" id="dropzoneFile" class="dropzoneFile" @change="onFileSelected" />
+      <input type="file" :id="`dropzoneFile-${id}`" class="dropzoneFile" @change="onFileSelected" :accept="accept" />
     </div>
   </label>
 </template>
 
 <script setup lang="ts">
+import { uniqueId } from "lodash";
 import { ref } from "vue";
 
+const { accept } = defineProps({
+  accept: {
+    type: String,
+    required: false
+  }
+})
+
+const id = uniqueId();
 const emit = defineEmits(['onFiles'])
 
 const active = ref(false);
