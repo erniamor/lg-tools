@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { Input, Icon, Card, Button, Divider } from "agnostic-vue";
-import { get, set, isUndefined } from "lodash";
+import { get, setWith, isUndefined } from "lodash";
 import { saveAs } from "file-saver";
 import getAllPaths from "@/utils/all-object-paths";
 import Dropzone from "@/components/Dropzone.vue";
@@ -46,8 +46,10 @@ function sortJson(dataModel: any, dataSorting: any) {
     const paths = getAllPaths(dataModel)
     paths
       .forEach((key: string, index: number) => {
+        console.log(key);
+
         const value = get(dataSorting, key);
-        if (!isUndefined(value)) set(dataSorted, key, value)
+        if (!isUndefined(value)) setWith(dataSorted, key, value, Object)
       })
     return JSON.stringify(dataSorted);
   }
