@@ -1,15 +1,14 @@
 <script setup lang="ts">
-//const image = require('@/assets/logo-powersante.png');
 </script>
 
 <template>
   <footer>
     <div class="footer-content">
       <div class="footer-text">
-        Powered by
+        
       </div>
       <div class="footer-image">
-        <img src="logo-powersante.png" alt="Logo Power Santé">
+       
       </div>
     </div>
   </footer>
